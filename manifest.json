@@ -1,0 +1,11 @@
+{
+    "name": "AMO Editor Tools",
+    "description": "Tools to make life more pleasant for AMO reviewers",
+    "version": "0.1",
+    "manifest_version": 2,
+    "content_scripts": [{
+        "run_at": "document_end",
+        "js": ["data/zipinfo.js", "data/zipinfo_browser.js", "data/amo_editor_tools.js"],
+        "matches": ["https://addons.mozilla.org/*/editors/*"]
+    }]
+}
