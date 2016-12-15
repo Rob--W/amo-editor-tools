@@ -98,7 +98,7 @@ function fetchAddonInfo(slug, onResult) {
           // Images (note: svg is also a font).
           'png', 'jpeg', 'jpg', 'gif', 'bmp', 'ico', 'svg',
           // Fonts
-          'woff', 'woff2', 'ttf', 'eot',
+          'woff', 'woff2', 'ttf', 'eot', 'otf',
           // CSS
           'css',
         ].includes(ext)) {
