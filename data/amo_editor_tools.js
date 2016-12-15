@@ -18,7 +18,13 @@ function getSlug(url) {
 // cached is sorted by access time - last accessed at front.
 function getSlugCache(slug) {
   let cached = localStorage[CACHE_STORAGE_KEY] || '[]';
-  cached = JSON.parse(cached);
+  try {
+    cached = JSON.parse(cached);
+  } catch (e) {
+  }
+  if (!Array.isArray(cached)) {
+    cached = [];
+  }
   let index = cached.findIndex(o => o.s === slug);
   return [cached, index];
 }
