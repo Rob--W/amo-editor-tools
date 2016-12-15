@@ -1,0 +1,22 @@
+{
+  "title": "AMO Editor Tools",
+  "name": "amo-editor-tools",
+  "id": "amo-editor-tools@robwu.nl",
+  "version": "0.0.0",
+  "description": "Tools to make life more pleasant for AMO reviewers",
+  "main": "addon-sdk-index.js",
+  "author": "Rob Wu <rob@robwu.nl> (https://robwu.nl)",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "permissions": {
+    "cross-domain-content": ["https://addons.cdn.mozilla.net/"],
+    "multiprocess": true,
+    "private-browsing": true
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}
