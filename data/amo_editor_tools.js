@@ -141,6 +141,19 @@ function expandQueueTable() {
   let extraHeaderCell = table.tHead.rows[0].insertCell(-1);
   extraHeaderCell.className = 'robs-amo-editor-tools-cell';
   extraHeaderCell.textContent = 'Size';
+  extraHeaderCell.title =
+    'The shown number is the size of the JS code minus libraries.\n' +
+    'Hover over the number to see a detailed breakdown.\n' +
+    'Click on a number to pin the details.\n' +
+    '\n' +
+    'These values are cached, double-click here to wipe the cache.';
+  extraHeaderCell.ondblclick = () => {
+    let size = (localStorage[CACHE_STORAGE_KEY] || '').length;
+    if (window.confirm('Do you want to delete the cached metadata of the zip files?\n' +
+      'The current size is ' + size + ' bytes.')) {
+      delete localStorage[CACHE_STORAGE_KEY];
+    }
+  };
   let {rows} = table.tBodies[0];
   [].forEach.call(rows, row => {
     let reviewLink = row.querySelector('a[href*="/editors/review/"]');
