@@ -14,4 +14,5 @@ require('sdk/page-mod').PageMod({
     data.url('amo_editor_tools.css'),
   ],
   contentScriptWhen: 'end',
+  attachTo: ['existing', 'top'],
 });
