@@ -1,3 +1,5 @@
+/* globals ZipInfo */
+'use strict';
 // en-US, en-GB, etc.
 const path = /^\/(?:[^\/]+)\/editors\/(.*)/i.exec(location.pathname)[1];
 // Cache up to CACHE_LENGTH items in localStorage[CACHE_STORAGE_KEY]
@@ -163,6 +165,7 @@ function expandQueueTable() {
     }
   });
 
+  /* jshint validthis:true */
   function pinThis() {
     // at capture, so this click handler always runs before the cell's click
     // handler.
