@@ -3,7 +3,6 @@ const path = /^\/(?:[^\/]+)\/editors\/(.*)/i.exec(location.pathname)[1];
 // Cache up to CACHE_LENGTH items in localStorage[CACHE_STORAGE_KEY]
 const CACHE_LENGTH = 500;
 const CACHE_STORAGE_KEY = 'robsAmoEditorToolsCache';
-console.log(path)
 
 if (path.startsWith('queue/')) {
   expandQueueTable();
@@ -52,10 +51,7 @@ function formatByteSize(fileSize) {
   return fileSize;
 }
 
-var runonce;
 function fetchAddonInfo(slug, onResult) {
-  if (runonce) return;
-  runonce = true;
   // For logic of URL, see https://github.com/Rob--W/crxviewer/blob/fb91e4a37de2a4ee36c925076473e5044c982915/src/cws_pattern.js#L36-L62
   let platformIds = [
     3, // Mac
