@@ -7,5 +7,10 @@
         "run_at": "document_end",
         "js": ["data/zipinfo.js", "data/zipinfo_browser.js", "data/amo_editor_tools.js"],
         "matches": ["https://addons.mozilla.org/*/editors/*"]
-    }]
+    }],
+    "applications": {
+        "gecko": {
+            "id": "amo-editor-tools@robwu.nl"
+        }
+    }
 }
