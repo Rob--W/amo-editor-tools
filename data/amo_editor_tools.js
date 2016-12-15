@@ -112,12 +112,12 @@ function fetchAddonInfo(slug, onResult) {
       let sortedMiscExts = Object.keys(miscExtSizes).sort((extA, extB) => miscExtSizes[extB] - miscExtSizes[extA]);
       let relevantSize = jsSize - jsLibSize;
       let title = [
-        'JS (no libraries):\t' + formatByteSize(relevantSize),
-        'JS libraries only:\t' + formatByteSize(jsLibSize),
-        'Markup (HTML/XUL):\t' + formatByteSize(markupSize),
-        'Static (fonts/images/...):\t' + formatByteSize(resourceSize),
-        'Other file sizes:\t' + formatByteSize(resourceSize),
-        'Other extensions = ' + sortedMiscExts.join(', '),
+        'JS (no libraries):    ' + formatByteSize(relevantSize),
+        'JS libraries only:    ' + formatByteSize(jsLibSize),
+        'Markup (HTML/XUL):    ' + formatByteSize(markupSize),
+        'Static (fonts/img/..):' + formatByteSize(resourceSize),
+        'Other file sizes:     ' + formatByteSize(miscSize),
+        'Other extensions =    ' + sortedMiscExts.join(', '),
       ].join('\n');
       onResult(relevantSize, title);
     });
@@ -141,9 +141,15 @@ function expandQueueTable() {
       saveForSlug(slug, version, {relevantSize, title});
       // Insert before last cell, which seems always empty (styling?).
       let cell = row.insertCell(row.cells.length - 1);
+      cell.className = 'robs-amo-editor-tools-cell';
       cell.style.textAlign = 'right';
       cell.style.width = '9ch';
       cell.textContent = formatByteSize(relevantSize);
+      var details = document.createElement('div');
+      details.className = 'robs-amo-editor-tools-cell-details';
+      details.textContent = title;
+      cell.appendChild(details);
+      cell.onclick = pinThis;
     };
     let cached = readForSlug(slug, version);
     if (cached) {
@@ -152,4 +158,18 @@ function expandQueueTable() {
       fetchAddonInfo(slug, onResult);
     }
   });
+
+  function pinThis() {
+    // at capture, so this click handler always runs before the cell's click
+    // handler.
+    document.body.addEventListener('click', unpinThis, true);
+    this.classList.add('rob-pinned-this');
+  }
+  function unpinThis() {
+    var pinnedDetails = document.querySelector('.rob-pinned-this');
+    if (pinnedDetails) {
+      pinnedDetails.classList.remove('rob-pinned-this');
+    }
+    document.body.removeEventListener('click', unpinThis, true);
+  }
 }

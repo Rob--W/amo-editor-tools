@@ -1,0 +1,26 @@
+.robs-amo-editor-tools-cell {
+  position: relative;
+}
+.robs-amo-editor-tools-cell-details {
+  display: none;
+  white-space: pre-wrap;
+  position: absolute;
+  right: 100%;
+  top: 0px;
+  /* prefix is 22 long, reserve space for 9 digits+commas, plus some margin. */
+  width: 40ch;
+  background: white;
+  color: black;
+  text-align: left;
+  font-family: monospace !important;
+  padding: 2px;
+  border: 1px solid #22A;
+  z-index: 1; /* otherwise icons show on top of us */
+}
+.robs-amo-editor-tools-cell:hover > .robs-amo-editor-tools-cell-details,
+.robs-amo-editor-tools-cell.rob-pinned-this > .robs-amo-editor-tools-cell-details {
+  display: block;
+}
+.robs-amo-editor-tools-cell:hover > .robs-amo-editor-tools-cell-details {
+  z-index: 1; /* hover takes precedence over pinned-by-click */
+}

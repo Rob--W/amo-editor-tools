@@ -6,6 +6,7 @@
     "content_scripts": [{
         "run_at": "document_end",
         "js": ["data/zipinfo.js", "data/zipinfo_browser.js", "data/amo_editor_tools.js"],
+        "css": ["data/amo_editor_tools.css"],
         "matches": ["https://addons.mozilla.org/*/editors/*"]
     }],
     "applications": {

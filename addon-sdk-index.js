@@ -10,5 +10,8 @@ require('sdk/page-mod').PageMod({
     data.url('zipinfo_browser.js'),
     data.url('amo_editor_tools.js'),
   ],
+  contentStyleFile: [
+    data.url('amo_editor_tools.css'),
+  ],
   contentScriptWhen: 'end',
 });
