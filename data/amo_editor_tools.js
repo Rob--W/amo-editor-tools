@@ -83,9 +83,8 @@ function fetchAddonInfo(slug, onResult) {
       let miscExtSizes = Object.create(null);
       for (let {filename, uncompressedSize} of entries.filter(entry => !entry.directory)) {
         let ext = filename.split('.').pop().toLowerCase();
-        if (ext.includes('/') || !filename.includes('.')) {
-          ext = '(no extension)';
-        }
+        // If no extension, use the base name
+        ext = ext.split('/').pop();
         if (['js', 'jsm'].includes(ext)) {
           jsSize += uncompressedSize;
           // Some of the files are listed at https://github.com/mozilla/amo-validator/blob/master/validator/testcases/hashes-allowed.txt
