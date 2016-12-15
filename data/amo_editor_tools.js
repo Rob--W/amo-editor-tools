@@ -110,12 +110,12 @@ function fetchAddonInfo(slug, onResult) {
       let sortedMiscExts = Object.keys(miscExtSizes).sort((extA, extB) => miscExtSizes[extB] - miscExtSizes[extA]);
       let relevantSize = jsSize - jsLibSize;
       let title = [
-        'JS (no libraries):    ' + formatByteSize(relevantSize),
-        'JS libraries only:    ' + formatByteSize(jsLibSize),
-        'Markup (HTML/XUL):    ' + formatByteSize(markupSize),
-        'Static (fonts/img/..):' + formatByteSize(resourceSize),
-        'Other file sizes:     ' + formatByteSize(miscSize),
-        'Other extensions =    ' + sortedMiscExts.join(', '),
+        'JS (no libraries):  ' + formatByteSize(relevantSize),
+        'JS libraries only:  ' + formatByteSize(jsLibSize),
+        'Markup (HTML/XUL):  ' + formatByteSize(markupSize),
+        'Fonts/img/CSS/...:  ' + formatByteSize(resourceSize),
+        'Other file sizes:   ' + formatByteSize(miscSize),
+        'Other extensions =  ' + sortedMiscExts.join(', '),
       ].join('\n');
       onResult(relevantSize, title);
     });
