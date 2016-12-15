@@ -121,8 +121,16 @@ function fetchAddonInfo(slug, onResult) {
 }
 
 function expandQueueTable() {
+  // First remove existing additions if the add-on was reloaded:
+  unpinThis();
+  for (let cell of document.querySelectorAll('.robs-amo-editor-tools-cell')) {
+    cell.remove();
+  }
+
   let table = document.getElementById('addon-queue');
-  table.tHead.rows[0].insertCell(-1).textContent = 'Size';
+  let extraHeaderCell = table.tHead.rows[0].insertCell(-1);
+  extraHeaderCell.className = 'robs-amo-editor-tools-cell';
+  extraHeaderCell.textContent = 'Size';
   let {rows} = table.tBodies[0];
   [].forEach.call(rows, row => {
     let reviewLink = row.querySelector('a[href*="/editors/review/"]');
